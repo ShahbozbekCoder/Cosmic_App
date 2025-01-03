@@ -15,5 +15,14 @@ fun MyNavigation() {
         composable("splash_screen") { SplashScreen(navController = navController) }
         composable("login_screen") { LoginScreen(navController = navController) }
         composable("home_screen") { HomeScreen() }
+        /*composable(
+            "inner_page/{planetName}",
+            arguments = listOf(navArgument("planetName") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val planetName = backStackEntry.arguments?.getString("planetName") ?: ""
+            InnerPage(navController = navController, planetName = planetName)
+        }
+        composable("favorites_screen") { FavoritesScreen(navController = navController) }
+*/
     }
 }

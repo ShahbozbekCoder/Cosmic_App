@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -58,229 +59,233 @@ fun LoginScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // UI elements for login screen
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = Modifier.height(68.dp))
         Image(
             painter = painterResource(id = R.drawable.cosmic_2),
             contentDescription = null
         )
-        Spacer(modifier = Modifier.height(100.dp))
-        Card(
-            modifier = Modifier
-                .fillMaxSize()
-                .height(540.dp)
-                .verticalScroll(rememberScrollState()),
-            shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
-            elevation = CardDefaults.cardElevation(4.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = Color(0xFF091522).copy(0.5f) // Shaffof fon uchun
-            ),
-            border = CardDefaults.outlinedCardBorder()
+        Spacer(modifier = Modifier.height(68.dp))
+        Box(
+            modifier = Modifier.fillMaxSize().wrapContentHeight(Alignment.Bottom),
+            contentAlignment = Alignment.BottomCenter
         ) {
-            Column(
+            Card(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(32.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .wrapContentHeight(align = Alignment.Bottom)
+                    .verticalScroll(rememberScrollState()),
+                shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
+                elevation = CardDefaults.cardElevation(4.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFF091522).copy(0.5f) // Shaffof fon uchun
+                ),
+                border = CardDefaults.outlinedCardBorder()
             ) {
-                Text(
-                    text = "Sign in",
-                    fontSize = 36.sp,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                OutlinedTextField(
-                    value = email.value,
-                    onValueChange = { email.value = it },
-                    placeholder = {
-                        Text(
-                            "Email",
-                            color = Color(0xFF8D8E99)
-                        )
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                    singleLine = true,
-                    shape = RoundedCornerShape(50),
-                    colors = TextFieldDefaults.textFieldColors(
-                        containerColor = Color(0xFF091522),
-                        focusedIndicatorColor = Color.White,
-                        unfocusedIndicatorColor = Color(0xFF3A3A42),
-                        cursorColor = Color.White,
-                    ),
-                    textStyle = TextStyle(
-                        color = Color.White,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                OutlinedTextField(
-                    value = password.value,
-                    onValueChange = { password.value = it },
-                    placeholder = {
-                        Text(
-                            "Password",
-                            color = Color(0xFF8D8E99)
-                        )
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                    singleLine = true,
-                    shape = RoundedCornerShape(50),
-                    colors = TextFieldDefaults.textFieldColors(
-                        containerColor = Color(0xFF091522),
-                        focusedIndicatorColor = Color.White,
-                        unfocusedIndicatorColor = Color(0xFF3A3A42),
-                        cursorColor = Color.White,
-                    ),
-                    textStyle = TextStyle(
-                        color = Color.White,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    text = "Forgot Password?",
-                    color = Color(0xFF11DCE8),
-                    fontSize = 22.sp
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Box(
+                Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp)
-                        .background(
-                            brush = Brush.linearGradient(
-                                colors = listOf(
-                                    Color(0xFFE961FF),
-                                    Color(0xFF72A5F2),
-                                    Color(0xFF00E5E5)
-
-                                )
-                            ),
-                            shape = RoundedCornerShape(50)
-                        )
-                        .clickable {
-                            navController.navigate("home_screen")
+                        .fillMaxSize()
+                        .padding(32.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Sign in",
+                        fontSize = 36.sp,
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    OutlinedTextField(
+                        value = email.value,
+                        onValueChange = { email.value = it },
+                        placeholder = {
+                            Text(
+                                "Email",
+                                color = Color(0xFF8D8E99)
+                            )
                         },
-                    contentAlignment = Alignment.Center,
-                    content = {
-                        Text(
-                            text = "Sign in",
+                        modifier = Modifier.fillMaxWidth(),
+                        singleLine = true,
+                        shape = RoundedCornerShape(50),
+                        colors = TextFieldDefaults.textFieldColors(
+                            containerColor = Color(0xFF091522),
+                            focusedIndicatorColor = Color.White,
+                            unfocusedIndicatorColor = Color(0xFF3A3A42),
+                            cursorColor = Color.White,
+                        ),
+                        textStyle = TextStyle(
                             color = Color.White,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 24.sp
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    OutlinedTextField(
+                        value = password.value,
+                        onValueChange = { password.value = it },
+                        placeholder = {
+                            Text(
+                                "Password",
+                                color = Color(0xFF8D8E99)
+                            )
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                        singleLine = true,
+                        shape = RoundedCornerShape(50),
+                        colors = TextFieldDefaults.textFieldColors(
+                            containerColor = Color(0xFF091522),
+                            focusedIndicatorColor = Color.White,
+                            unfocusedIndicatorColor = Color(0xFF3A3A42),
+                            cursorColor = Color.White,
+                        ),
+                        textStyle = TextStyle(
+                            color = Color.White,
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        text = "Forgot Password?",
+                        color = Color(0xFF11DCE8),
+                        fontSize = 22.sp
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp)
+                            .background(
+                                brush = Brush.linearGradient(
+                                    colors = listOf(
+                                        Color(0xFFE961FF),
+                                        Color(0xFF72A5F2),
+                                        Color(0xFF00E5E5)
+
+                                    )
+                                ),
+                                shape = RoundedCornerShape(50)
+                            )
+                            .clickable {
+                                navController.navigate("home_screen")
+                            },
+                        contentAlignment = Alignment.Center,
+                        content = {
+                            Text(
+                                text = "Sign in",
+                                color = Color.White,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 24.sp
+                            )
+                        }
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        HorizontalDivider(
+                            modifier = Modifier
+                                .padding(end = 16.dp, top = 10.dp)
+                                .weight(1f)
+                                .alignByBaseline()
+                                .height(1.dp),
+                            color = Color(0xFF8D8E99)
+                        )
+                        Text(
+                            text = "or sign in using",
+                            fontSize = 16.sp,
+                            color = Color(0xFFC4C4C4),
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.alignByBaseline()
+                        )
+                        HorizontalDivider(
+                            modifier = Modifier
+                                .padding(start = 16.dp, top = 10.dp)
+                                .weight(1f)
+                                .alignByBaseline()
+                                .height(1.dp),
+                            color = Color(0xFF8D8E99)
                         )
                     }
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    HorizontalDivider(
-                        modifier = Modifier
-                            .padding(end = 16.dp, top = 10.dp)
-                            .weight(1f)
-                            .alignByBaseline()
-                            .height(1.dp),
-                        color = Color(0xFF8D8E99)
-                    )
-                    Text(
-                        text = "or sign in using",
-                        fontSize = 16.sp,
-                        color = Color(0xFFC4C4C4),
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.alignByBaseline()
-                    )
-                    HorizontalDivider(
-                        modifier = Modifier
-                            .padding(start = 16.dp, top = 10.dp)
-                            .weight(1f)
-                            .alignByBaseline()
-                            .height(1.dp),
-                        color = Color(0xFF8D8E99)
-                    )
-                }
-                Spacer(modifier = Modifier.height(8.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .clickable {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .clickable {
 
-                            },
-                        contentAlignment = Alignment.Center,
-                        content = {
-                            Image(
-                                painter = painterResource(id = R.drawable.twitter),
-                                contentDescription = "Twitter",
-                                modifier = Modifier.size(100.dp)
-                            )
-                        }
-                    )
-                    Box(
-                        modifier = Modifier
-                            .clickable {
+                                },
+                            contentAlignment = Alignment.Center,
+                            content = {
+                                Image(
+                                    painter = painterResource(id = R.drawable.twitter),
+                                    contentDescription = "Twitter",
+                                    modifier = Modifier.size(100.dp)
+                                )
+                            }
+                        )
+                        Box(
+                            modifier = Modifier
+                                .clickable {
 
-                            },
-                        contentAlignment = Alignment.Center,
-                        content = {
-                            Image(
-                                painter = painterResource(id = R.drawable.facebook),
-                                contentDescription = "Facebook",
-                                modifier = Modifier.size(100.dp)
-                            )
-                        }
-                    )
-                    Box(
-                        modifier = Modifier
-                            .clickable {
+                                },
+                            contentAlignment = Alignment.Center,
+                            content = {
+                                Image(
+                                    painter = painterResource(id = R.drawable.facebook),
+                                    contentDescription = "Facebook",
+                                    modifier = Modifier.size(100.dp)
+                                )
+                            }
+                        )
+                        Box(
+                            modifier = Modifier
+                                .clickable {
 
-                            },
-                        contentAlignment = Alignment.Center,
-                        content = {
-                            Image(
-                                painter = painterResource(id = R.drawable.google),
-                                contentDescription = "Google",
-                                modifier = Modifier.size(100.dp)
-                            )
-                        }
-                    )
-                }
-                Spacer(modifier = Modifier.height(16.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "Don't have an account?",
-                        color = Color(0xFF9E9E9E),
-                        fontSize = 15.sp
-                    )
-                    Spacer(modifier = Modifier.size(4.dp))
-                    Text(
-                        text = "Sign up",
-                        color = Color(0xFF11DCE8),
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.clickable {
+                                },
+                            contentAlignment = Alignment.Center,
+                            content = {
+                                Image(
+                                    painter = painterResource(id = R.drawable.google),
+                                    contentDescription = "Google",
+                                    modifier = Modifier.size(100.dp)
+                                )
+                            }
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Don't have an account?",
+                            color = Color(0xFF9E9E9E),
+                            fontSize = 15.sp
+                        )
+                        Spacer(modifier = Modifier.size(4.dp))
+                        Text(
+                            text = "Sign up",
+                            color = Color(0xFF11DCE8),
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.clickable {
 
-                        }
-                    )
+                            }
+                        )
+                    }
                 }
             }
         }
     }
 }
-//
-//@Preview(showBackground = true, showSystemUi = true)
-//@Composable
-//fun LoginScreenPreview() {
-//    LoginScreen(navController = NavController(LocalContext.current))
-//}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun LoginScreenPreview() {
+    LoginScreen(navController = NavController(LocalContext.current))
+}
